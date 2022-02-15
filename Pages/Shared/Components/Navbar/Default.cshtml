@@ -1,0 +1,46 @@
+﻿@{ 
+    var dataItem = Model;
+}
+<ul class="nav nav-pills">
+    <li class="nav-item">
+        <a class="nav-link btn text-light" asp-area="" asp-page="/index"><i class="fas fa-home" style="font-size: 20px;"></i></a>
+    </li>
+    @foreach (var item in dataItem.Items)
+    {
+        @if (item.UrlAreas != dataItem.CurentUrlAreas)
+        {
+            @if (string.IsNullOrEmpty(item.UrlPage) && string.IsNullOrEmpty(item.UrlAreas))
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-page="/Index">@item.DisPlayLG</a>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="@item.UrlAreas" asp-page="/Index">@item.DisPlayLG</a>
+                </li>
+            }
+
+        }
+        else
+        {
+            @if (string.IsNullOrEmpty(item.UrlPage) && string.IsNullOrEmpty(item.UrlAreas))
+            {
+                <li class="nav-item">
+                    <a class="nav-link active text-light" asp-area="" asp-page="/Index">@item.DisPlayLG</a>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link active text-light" asp-area="@item.UrlAreas"  asp-page="/Index">@item.DisPlayLG</a>
+                </li>
+            }
+
+        }
+
+
+    }
+
+</ul>

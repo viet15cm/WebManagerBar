@@ -1,0 +1,25 @@
+﻿@{
+    var dataItem = Model;
+}
+<ul class="nav nav-pills">
+    @foreach (var item in dataItem.ItemsLogin)
+    {
+        @if (item.UrlPage != dataItem.CurentUrlPage)
+        {
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="@item.UrlAreas" asp-page="/@item.UrlPage">@item.DisPlayLG </a>
+                </li>
+            
+
+        }
+        else
+        {                  
+                <li class="nav-item active">
+                    <a class="nav-link active text-light" asp-area="@item.UrlAreas" asp-page="/@item.UrlPage">@item.DisPlayLG</a>
+                </li>         
+        }
+
+
+    }
+
+</ul>

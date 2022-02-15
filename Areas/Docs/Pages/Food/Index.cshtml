@@ -1,0 +1,33 @@
+﻿@page
+@model WebManager.Areas.Docs.Pages.Food.IndexModel
+@{
+    var listItem = Model.foods;
+
+}
+
+<h1>Thực Phẩm</h1>
+<table class="table table-success table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Tên</th>
+            <th scope="col">Giá</th>
+            <th scope="col">Khấu hao</th>
+            <th scope="col">Tùy chọn</th>
+        </tr>
+    </thead>
+    @foreach (var item in listItem)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Price$</td>
+            <td>@item.Depreciation%</td>
+            <td>
+                <a class="btn btn-primary" asp-area="Docs" asp-page="/Food/Add">Thêm</a>
+                <a class="btn btn-secondary" asp-area="Docs" asp-page="/Food/Editor">Sửa</a>
+                <a class="btn btn-danger" asp-area="Docs" asp-page="/Food/Delete">Xóa</a>
+            </td>
+        </tr>
+    }
+</table>
+
+@await Component.InvokeAsync("Paging", Model.Currentpage)
